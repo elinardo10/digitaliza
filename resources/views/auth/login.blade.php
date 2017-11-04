@@ -37,7 +37,7 @@
           <div class="row">
             <!-- Logo & Information Panel-->
            <div class="col-lg-6">
-              <div class="info d-flex align-items-center">
+              <div class="info d-flex align-items-center justify-content-center">
                 <div class="content">
                   <div class="logo">
                     <img src="{{ asset('img/logo.png')}}" class="d-inline-block align-top img-fluid">
