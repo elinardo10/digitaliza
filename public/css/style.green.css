@@ -46,6 +46,7 @@ canvas {
 
 .container-fluid {
   padding: 0 30px;
+
 }
 
 @media (max-width: 576px) {
@@ -1403,6 +1404,8 @@ footer.main-footer {
   background: #2f333e;
   color: #fff;
   padding: 10px;
+  bottom:0;
+
 }
 
 footer.main-footer a {
@@ -2381,13 +2384,13 @@ body {
 }
 
 a {
-  color: #33b35a;
+  color: #696969;
   text-decoration: none;
 }
 
 a:focus, a:hover {
-  color: #22773c;
-  text-decoration: underline;
+  color: #808080;
+  text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6,

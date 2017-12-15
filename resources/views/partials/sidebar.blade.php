@@ -12,7 +12,7 @@
             <li class="active"> <a href="./"><i class="icon-home"></i>Home</a></li>
             <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Paginas </a>
               <ul id="dashvariants" class="collapse list-unstyled">
-                <li><a href="#">Listar Arquivos</a></li>
+                <li><a href="{{ route('folders.listar') }}">Listar Arquivos</a></li>
                 <li><a href="#">Page</a></li>
                 <li><a href="#">Page</a></li>
                 <li><a href="#">Page</a></li>
