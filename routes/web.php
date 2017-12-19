@@ -7,7 +7,8 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'], function(){
 		Route::group(['prefix' => 'sistema', 'where'=>['id'=>'[0-9]+']], function(){
 		route::get('',     ['as'=> 'home', 'uses' => 'HomeController@index']);
-		route::get('arquivos',     ['as'=> 'folders.listar', 'uses' => 'ArquivoController@list']);
+		route::get('folders',     ['as'=> 'folders.listar', 'uses' => 'ArquivoController@list']);
+		route::get('subfolders/{id}',     ['as'=> 'subpasta.listar', 'uses' => 'ArquivoController@subpasta']);
 		
 
 		Route::get('addimage/{id}', ['as' => 'add_image', 'uses' => 'ImagemController@getForm']);

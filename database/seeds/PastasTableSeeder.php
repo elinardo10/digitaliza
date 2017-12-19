@@ -11,22 +11,29 @@ class PastasTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('pastas');
+        
+      $arrayLista = [
+            'Contabilidade',
+            'Extratos',
+            'Licitações'
+        ];       
 
+        foreach ($arrayLista as $lista) {
 
-         App\Pasta::create([
-            'nome' => 'contabilidade',
+            $pasta_id = \App\Pasta::create([
+                'nome' =>$lista,
+            ])->id;
             
-        ]);
+            $total_de_ano = 3;
+            for ($i=0; $i < $total_de_ano; $i++) { 
+                \App\SubPasta::create([
+                    'nome' => date('Y', strtotime("+$i year")),
+                    'pasta_id' => $pasta_id
+                ]);
+            }
 
-          App\Pasta::create([
-            'nome' => 'extratos',
-            
-        ]);
-
-           App\Pasta::create([
-            'nome' => 'Licitações',
-            
-        ]);
-    }
+        }
+         
+    
+}
 }

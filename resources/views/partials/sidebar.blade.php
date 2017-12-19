@@ -9,7 +9,7 @@
           </div>
           <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
           <ul class="list-unstyled">
-            <li class="active"> <a href="./"><i class="icon-home"></i>Home</a></li>
+            <li class="active"> <a href="{{ route('folders.listar') }}"><i class="icon-home"></i>Home</a></li>
             <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Paginas </a>
               <ul id="dashvariants" class="collapse list-unstyled">
                 <li><a href="{{ route('folders.listar') }}">Listar Arquivos</a></li>

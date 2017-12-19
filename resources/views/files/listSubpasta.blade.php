@@ -19,14 +19,14 @@
           <section class="projects no-padding-bottom">
             <div class="container-fluid">
               <!-- Project-->
-              @foreach($pastas as $pasta)
+              @foreach($pasta->subpasta as $folder)
               <div class="project">
                 <div class="row bg-white has-shadow">
                   <div class="left-col col-lg-6 d-flex align-items-center justify-content-between">
                     <div class="project-title d-flex align-items-center">
                       <div class="text">
                         
-              <h3 class="h4"><i class="fa fa-folder fa-4" aria-hidden="true"></i> <a href="{{route('subpasta.listar', $pasta->id )}}">{{$pasta->nome}}</a></h3>
+                        <h3 class="h4"><i class="fa fa-folder fa-4" aria-hidden="true"></i> <a href="">{{$folder->nome}}</a></h3>
                       </div>
                     </div>
                    </div>
