@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 Use App\Pasta;
 Use App\SubPasta;
+Use App\User;
 
 class ArquivoController extends Controller
 {	   
@@ -23,5 +24,14 @@ class ArquivoController extends Controller
       	$pastas = Pasta::with('subpasta')->get();
 
     	return view('files.listSubpasta', ['pasta'=>$pasta, 'pastas'=>$pastas]);
+    }
+
+    public function formLink(){
+    	$pastas = Pasta::all();
+    	$usuario = User::all();
+
+      	
+
+    	return view('files.newLink')->with(compact('pastas', 'subpasta','usuario'));
     }
 }

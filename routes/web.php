@@ -9,11 +9,8 @@ Route::group(['middleware' => 'auth'], function(){
 		route::get('',     ['as'=> 'home', 'uses' => 'HomeController@index']);
 		route::get('folders',     ['as'=> 'folders.listar', 'uses' => 'ArquivoController@list']);
 		route::get('subfolders/{id}',     ['as'=> 'subpasta.listar', 'uses' => 'ArquivoController@subpasta']);
+		route::get('newkink',     ['as'=> 'new.link', 'uses' => 'ArquivoController@formLink']);
 		
-
-		Route::get('addimage/{id}', ['as' => 'add_image', 'uses' => 'ImagemController@getForm']);
-		Route::post('addimage', array('as' => 'add_image_to_album', 'uses' => 'ImagemController@postAdd'));
-		Route::get('deleteimage/{id}', array('as' => 'delete_image', 'uses' => 'ImagemController@getDelete'));
  	});
 
 });

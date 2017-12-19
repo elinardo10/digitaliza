@@ -10,7 +10,7 @@
           <!-- Breadcrumb-->
           <div class="breadcrumb-holder container-fluid">
             <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('folders.listar') }}">Home</a></li>
               <li class="breadcrumb-item active">Pastas           </li>
             </ul>
           </div>

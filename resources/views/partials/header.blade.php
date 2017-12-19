@@ -18,7 +18,7 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
     <!-- Font Awesome CDN-->
     <!-- you can replace it by local Font Awesome-->
     <script src="https://use.fontawesome.com/99347ac47f.js"></script>
@@ -29,7 +29,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
-    <div class="page home-page">
+    <div class="page">
       <!-- Main Navbar-->
       <header class="header">
         <nav class="navbar">
