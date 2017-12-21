@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Link extends Model
 {
      protected $fillable = [
-        'nome','link', 'pasta_id', 'subpasta_id', 'user_id'
+        'nome','link','user_id', 'pasta_id', 'subpasta_id'
     ];
 
 

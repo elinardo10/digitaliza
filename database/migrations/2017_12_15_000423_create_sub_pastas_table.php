@@ -15,9 +15,9 @@ class CreateSubPastasTable extends Migration
     {
         Schema::create('sub_pastas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pasta_id')->unsigned();
+            $table->integer('pasta_id')->unsigned()->default(0);
             $table->foreign('pasta_id')->references('id')->on('pastas')->onDelete('CASCADE')->onUpdate('CASCADE');
-            $table->string('nome');
+            $table->string('subpasta');
             $table->timestamps();
         });
     }

@@ -30,20 +30,20 @@
                     <div class="card-header d-flex align-items-center">
                       <h3 class="h4">Cadastrando Novo Link</h3>
                     </div>
+                    @include('partials._messages')
                     <div class="card-body">
-                      <form class="form-horizontal">                                      
-                      
+                      <form class="form-horizontal" method="POST" action="{{ route('store.link') }}">          {{ csrf_field() }}                            
                         <div class="line"> </div>
                         <div class="row">
                           <label class="col-sm-3 form-control-label">Dados do Link</label>
                           <div class="col-sm-9">
                             <div class="form-group-material">
-                              <input id="register-username" type="text" name="registerUsername" required class="input-material">
-                              <label for="register-username" class="label-material">Nome do Arquivo</label>
+                              <input id="register-name" type="text" name="nome" required class="input-material">
+                              <label for="register-name" class="label-material">Nome do Arquivo</label>
                             </div>
                             <div class="form-group-material">
-                              <input id="register-email" type="email" name="registerEmail" required class="input-material">
-                              <label for="register-email" class="label-material">Link do Google Driver</label>
+                              <input id="register-link" type="text" name="link" required class="input-material">
+                              <label for="register-link" class="label-material">Link do Google Driver</label>
                             </div>
                         
                           </div>
@@ -54,9 +54,9 @@
                           <label class="col-sm-3 form-control-label">Selecione um Usuário</label>
                           <div class="col-sm-9 select">
                             <select name="user_id" class="form-control">
-                                @foreach($usuario as $u)
+                      @foreach($usuario as $u)
                             <option value="{{ $u->id }}">{{$u->name}}</option>
-                                @endforeach
+                        @endforeach
                             </select>
                           </div>
 
@@ -64,17 +64,17 @@
                           <div class="col-sm-9 select">
                             <select name="pasta_id" class="form-control">
                               @foreach($pastas as $pasta)
-                              <option value="{{ $pasta->id }}">{{ $pasta->nome }}</option>
+                              <option value="{{ $pasta->id }}">{{ $pasta->pasta }}</option>
                               @endforeach
                             </select>
                           </div>
 
                             <label class="col-sm-3 form-control-label">Selecione uma Sub Pasta</label>
                           <div class="col-sm-9 select">
-                            <select name="subpasta_id" class="form-control">
-                              @foreach($pasta->subpasta as $subp)
-                              <option value="{{ $subp->id }}">{{ $subp->nome }}</option>
-                              @endforeach
+                            <select name="subpasta_id" class="form-control" id="subpasta" >
+                              
+                              <option value=""></option>
+                              
                             </select>
                           </div>
                          
@@ -94,3 +94,18 @@
             </div>
           </section>
              @endsection
+
+             @section('scripts')
+                <script type="text/javascript">
+                $('select[name=pasta_id]').change(function () {
+                  var idPasta = $(this).val();
+                $.get('/subfolders/' + idPasta, function (subpastas) {
+
+                $('select[name=subpasta_id]').empty();
+                $.each(subpastas, function (key, value) {
+                    $('select[name=subpasta_id]').append('<option value=' + value.id + '>' + value.name + '</option>');
+                });
+            });
+        });
+               </script>
+          @endsection

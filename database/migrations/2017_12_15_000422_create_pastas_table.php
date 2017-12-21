@@ -15,7 +15,7 @@ class CreatePastasTable extends Migration
     {
         Schema::create('pastas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome'); 
+            $table->string('pasta'); 
             $table->timestamps();
         });
     }

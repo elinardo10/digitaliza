@@ -21,13 +21,13 @@ class PastasTableSeeder extends Seeder
         foreach ($arrayLista as $lista) {
 
             $pasta_id = \App\Pasta::create([
-                'nome' =>$lista,
+                'pasta' =>$lista,
             ])->id;
             
             $total_de_ano = 3;
             for ($i=0; $i < $total_de_ano; $i++) { 
                 \App\SubPasta::create([
-                    'nome' => date('Y', strtotime("+$i year")),
+                    'subpasta' => date('Y', strtotime("+$i year")),
                     'pasta_id' => $pasta_id
                 ]);
             }
