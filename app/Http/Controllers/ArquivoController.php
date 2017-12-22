@@ -8,6 +8,7 @@ Use App\SubPasta;
 Use App\User;
 Use App\Link;
 use Session;
+use Illuminate\Support\Facades\Response;
 
 class ArquivoController extends Controller{
 	
@@ -21,34 +22,36 @@ class ArquivoController extends Controller{
     }
 
       public function list(){
-      	 $pastas = Pasta::all();
+      	 $pastas = $this->pastaModel->all();
 
     	return view('files.listarFolders', compact('pastas'));
     }
 
-     public function subpasta($idPasta){
+     public function formLink(){
 
-     	$pasta = $this->pastaModel->find($idPasta);
-        $subpastas = $pasta->subpasta()->getQuery()->get(['id', 'subpasta']);
-        return Response::json($subpastas);
-      	//$pasta = Pasta::with('subpasta')->find($id);
-      	//$pastas = Pasta::with('subpasta')->get();
-
-    	return view('files.listSubpasta', ['pasta'=>$pasta, 'subpastas'=>$subpastas]);
-    }
-
-    public function formLink(){
     	$pastas = $this->pastaModel->all();
     	$usuario = User::all();
-
-      	
 
     	return view('files.newLink')->with(compact('pastas','usuario'));
     }
 
+     public function subpasta($idPasta){
+     	
+        $pasta = $this->pastaModel->find($idPasta);
+        $subpastas = $pasta->subpasta()->getQuery()->get(['id', 'subpasta','pasta_id']);
+        return Response::json($subpastas);
+      	//$pasta = Pasta::with('subpasta')->find($id);
+      	//$pastas = Pasta::with('subpasta')->get();*/
+
+    	return view('files.listSubpasta', ['pasta'=>$pasta, 'subpastas'=>$subpastas]);
+    	
+    }
+
+
     public function storeLink(Request $request, Link $link){
     	
     	 $insert = $link->create($request->all());
+    	 //$link->pasta()->createMany(Request::all());
 
     	 if ($insert)
         return redirect()

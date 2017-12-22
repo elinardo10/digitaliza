@@ -19,7 +19,7 @@
           <section class="projects no-padding-bottom">
             <div class="container-fluid">
               <!-- Project-->
-              @foreach($pasta->subpasta as $folder)
+              @foreach($subpastas as $folder)
               <div class="project">
                 <div class="row bg-white has-shadow">
                   <div class="left-col col-lg-6 d-flex align-items-center justify-content-between">

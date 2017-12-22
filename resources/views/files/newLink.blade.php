@@ -32,7 +32,8 @@
                     </div>
                     @include('partials._messages')
                     <div class="card-body">
-                      <form class="form-horizontal" method="POST" action="{{ route('store.link') }}">          {{ csrf_field() }}                            
+                      <form class="form-horizontal" method="POST" action="{{ route('store.link') }}">          
+                        {{ csrf_field() }}                            
                         <div class="line"> </div>
                         <div class="row">
                           <label class="col-sm-3 form-control-label">Dados do Link</label>
@@ -62,7 +63,7 @@
 
                            <label class="col-sm-3 form-control-label">Selecione uma Pasta</label>
                           <div class="col-sm-9 select">
-                            <select name="pasta_id" class="form-control">
+                            <select name="pasta_id" id="pasta_id" class="form-control">
                               @foreach($pastas as $pasta)
                               <option value="{{ $pasta->id }}">{{ $pasta->pasta }}</option>
                               @endforeach
@@ -71,10 +72,10 @@
 
                             <label class="col-sm-3 form-control-label">Selecione uma Sub Pasta</label>
                           <div class="col-sm-9 select">
-                            <select name="subpasta_id" class="form-control" id="subpasta" >
-                              
+                            <select name="subpasta_id" id="subpasta_id" class="form-control" >
+                               
                               <option value=""></option>
-                              
+                               
                             </select>
                           </div>
                          
@@ -95,17 +96,20 @@
           </section>
              @endsection
 
-             @section('scripts')
-                <script type="text/javascript">
-                $('select[name=pasta_id]').change(function () {
-                  var idPasta = $(this).val();
-                $.get('/subfolders/' + idPasta, function (subpastas) {
+       @section('scripts')
+       <script type="text/javascript">
+         $('#pasta_id').on('change', function(e){
+        console.log(e);
 
-                $('select[name=subpasta_id]').empty();
-                $.each(subpastas, function (key, value) {
-                    $('select[name=subpasta_id]').append('<option value=' + value.id + '>' + value.name + '</option>');
-                });
-            });
+        var idPasta = e.target.value;
+          $.get('subfolders/' + idPasta, function(data){
+          //teste de data ok. funcionou no console
+          $('#subpasta_id').empty();
+          $.each(data, function(index, subpastObj){
+            $('#subpasta_id').append('<option value=' + subpastObj.id+ '>' +subpastObj.subpasta+ '</option>');
+
+          });
         });
-               </script>
-          @endsection
+      });
+        </script>
+     @endsection
