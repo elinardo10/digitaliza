@@ -26,7 +26,7 @@
                     <div class="project-title d-flex align-items-center">
                       <div class="text">
                         
-                        <h3 class="h4"><i class="fa fa-folder fa-4" aria-hidden="true"></i> <a href="{{route('listar.links', $folder->id)}}">{{$folder->subpasta}}</a></h3>
+                        <h3 class="h4"><i class="fa fa-folder fa-4" aria-hidden="true"></i> <a href="{{route('listar.links', $pasta->id)}}">{{$folder->subpasta}}</a></h3>
                       </div>
                     </div>
                    </div>

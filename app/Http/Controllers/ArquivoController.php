@@ -13,10 +13,12 @@ use Illuminate\Support\Facades\Response;
 class ArquivoController extends Controller{
 	
 	private $pastaModel;
+	private $subpastaModel;
 
-	public function __construct(Pasta $pasta){
+	public function __construct(Pasta $pasta, SubPasta $subpasta){
 
 		$this->pastaModel = $pasta;
+		$this->subpastaModel = $subpasta;
         $this->middleware('auth');
 
     }
@@ -35,7 +37,7 @@ class ArquivoController extends Controller{
     	return view('files.newLink')->with(compact('pastas','usuario'));
     }
 
-     public function subpasta($idPasta){
+     public function selectsub($idPasta){
      	
         $pasta = $this->pastaModel->find($idPasta);
         $subpastas = $pasta->subpasta()->getQuery()->get(['id', 'subpasta','pasta_id']);
@@ -43,8 +45,20 @@ class ArquivoController extends Controller{
       	//$pasta = Pasta::with('subpasta')->find($id);
       	//$pastas = Pasta::with('subpasta')->get();*/
 
-    	return view('files.listSubpasta', ['pasta'=>$pasta, 'subpastas'=>$subpastas]);
     	
+    	
+    }
+
+     public function subpasta($id){
+     	
+        $pasta = $this->pastaModel->find($id);
+        $subpastas = $pasta->subpasta()->getQuery()->get(['id', 'subpasta']);
+        
+      	//$pasta = Pasta::with('subpasta')->find($id);
+      	//$pastas = Pasta::with('subpasta')->get();*/
+
+    	return view('files.listSubpasta', ['pasta'=>$pasta, 'subpastas'=>$subpastas]);
+
     }
 
 
@@ -66,10 +80,11 @@ class ArquivoController extends Controller{
 
     }
 
-    public function listarLink(){
+    public function listarLink($id){
+    	$pasta = $this->pastaModel->find($id);
+        $subpastas = $pasta->link()->getQuery()->get(['id', 'nome','link']);
 
 
-
-    	return view('files.listLinks', ['pastas'=>$pastas]);
+    	return view('files.listLinks')->with(compact('pasta', 'subpastas'));
     }
 }

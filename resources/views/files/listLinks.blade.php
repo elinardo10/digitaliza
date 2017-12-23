@@ -28,7 +28,7 @@
                       </div>
                     </div>
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">Cadastrando Novo Link</h3>
+                      <h3 class="h4">Lista dos Link</h3>
                     </div>
                     @include('partials._messages')
                     <div class="card-body">
@@ -36,31 +36,25 @@
                         <thead>
                           <tr>
                             <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
+                            <th>Nome do Arquivo</th>
+                            <th>Ações</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                        </tbody>
+                         @foreach($subpastas as $linkar)
+            <tbody>
+                <tr>
+                        <td>{{ $linkar->id }} </td>
+                        <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{ $linkar->nome }} </td>
+                        
+                        <td width="1%" nowrap="nowrap">
+  <a href="{{$linkar->link}}" title="Detalhes"><button type="button" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true" alt="Detalhes"></i></button></a>
+
+ <a href="" title="Delete Dados" onclick="return confirm('Tem certeza disso?')"><button type="button" class="btn btn-danger btn-large"><i class="fa fa-trash-o" aria-hidden="true" alt="deletar"></i></button></a>
+                            </td>
+
+                </tr>
+           </tbody>
+            @endforeach
                       </table>
                     </div>
                   </div>
