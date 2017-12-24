@@ -40,7 +40,7 @@
                             <th>Ações</th>
                           </tr>
                         </thead>
-                         @foreach($subpastas as $linkar)
+                         @foreach($pasta as $linkar)
             <tbody>
                 <tr>
                         <td>{{ $linkar->id }} </td>

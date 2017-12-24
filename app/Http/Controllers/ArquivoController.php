@@ -80,11 +80,9 @@ class ArquivoController extends Controller{
 
     }
 
-    public function listarLink($id){
-    	$pasta = $this->pastaModel->find($id);
-        $subpastas = $pasta->link()->getQuery()->get(['id', 'nome','link']);
-
-
+    public function listarLink($id){    	
+        $subpasta = SubPasta::find($id);
+        $pasta = $subpasta->link()->get();
     	return view('files.listLinks')->with(compact('pasta', 'subpastas'));
     }
 }

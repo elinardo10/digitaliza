@@ -15,6 +15,6 @@ public function pasta(){
     }
 
     public function link(){
-        return $this->hasMany('App\Link');
+        return $this->hasMany('App\Link','subpasta_id','id');
     }
 }
