@@ -44,7 +44,7 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
               <div class="navbar-header">
-                <!-- Navbar Brand --><a href="index.html" class="navbar-brand">
+                <!-- Navbar Brand --><a href="{{ route('folders.listar') }}" class="navbar-brand">
                   <div class="brand-text brand-big hidden-lg-down"><img src="{{ asset('img/logo.png')}}" class="img-fluid" style="max-height: 40px; margin: 0 auto;"></div>
                   <div class="brand-text brand-small"><strong><img src="{{ asset('img/logo_curta.png')}}" class="img-fluid" style="max-height: 40px; margin: 0 auto;"></strong></div></a>
                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>

@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class SubPasta extends Model
 {
     protected $fillable = [
-        'nome','pasta_id',
+        'subpasta','pasta_id',
     ];
 
 public function pasta(){
-       return $this->belongsTo('App\Pasta'); 
+       return $this->belongsTo('App\Pasta','pasta','id'); 
     }
 
     public function link(){

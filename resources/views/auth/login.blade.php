@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="copyrights text-center">
-        <p>Desenvolvido na <a href="#" class="float-center"><img src="img/logo_etech.png" style="max-height:30px;" class="img-fluid" alt=""></a>
+        <p>Desenvolvido na <a href="https://www.instagram.com/etech.elinardo/" target="_blank" class="float-center"><img src="img/logo_etech.png" style="max-height:30px;" class="img-fluid" alt=""></a>
         <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
       </div>
     </div>

@@ -80,9 +80,11 @@ class ArquivoController extends Controller{
 
     }
 
-    public function listarLink($id){    	
+    public function listarLink($id){  
+    	$pasta = $this->pastaModel->find($id); //passando essa variavel para url de informações breadcrumb-item
+
         $subpasta = SubPasta::find($id);
         $pasta = $subpasta->link()->get();
-    	return view('files.listLinks')->with(compact('pasta', 'subpastas'));
+    	return view('files.listLinks')->with(compact('pasta', 'subpasta','pasta'));
     }
 }

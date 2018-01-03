@@ -5,7 +5,7 @@
                   <p>Digitaliza Soluções &copy; {{ date('Y') }} - Todos os direitos Reservados</p>
                 </div>
                 <div class="col-sm-6 text-right">
-                  <p>Desenvolvido na <a href="#" class="external"><img src="{{ asset('img/logo_etech.png')}}" style="max-height:30px;" class="img-fluid" alt=""></a>
+                  <p>Desenvolvido na <a href="https://www.instagram.com/etech.elinardo/" target="_blank" class="external"><img src="{{ asset('img/logo_etech.png')}}" style="max-height:30px;" class="img-fluid" alt=""></a>
                   <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
                 </div>
               </div>

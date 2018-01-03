@@ -28,6 +28,6 @@ class User extends Authenticatable
     ];
 
      public function link(){
-        return $this->hasMany('App\Link');
+        return $this->hasMany('App\Link', 'user_id');
     }
 }

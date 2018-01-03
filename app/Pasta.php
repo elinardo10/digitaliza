@@ -8,16 +8,16 @@ class Pasta extends Model
 {	
 	
     protected $fillable = [
-        'nome'
+        'pasta'
     ];
 
 
      public function subpasta(){
-        return $this->hasMany('App\SubPasta');
+        return $this->hasMany('App\SubPasta', 'pasta_id', 'id');
     }
 
      public function link(){
-        return $this->hasMany('App\Link');
+        return $this->hasMany('App\Link', 'pasta_id');
     }
 
 }

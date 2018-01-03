@@ -8,12 +8,13 @@
             </div>
           </header>
           <!-- Breadcrumb-->
+          
           <div class="breadcrumb-holder container-fluid">
             <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ route('folders.listar') }}">Home</a></li>
-              <li class="breadcrumb-item active">lista de Arquivos           </li>
+              {{ Breadcrumbs::render('show.links', $subpasta->id, $pasta) }}
             </ul>
           </div>
+
    <!-- Forms Section-->
           <section class="forms"> 
             <div class="container-fluid">
@@ -47,7 +48,7 @@
                         <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{ $linkar->nome }} </td>
                         
                         <td width="1%" nowrap="nowrap">
-  <a href="{{$linkar->link}}" title="Detalhes"><button type="button" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true" alt="Detalhes"></i></button></a>
+  <a href="{{$linkar->link}}" target="_blank" title="Baixar"><button type="button" class="btn btn-primary"><i class="fa fa-download" aria-hidden="true" alt="baixar"></i></button></a>
 
  <a href="" title="Delete Dados" onclick="return confirm('Tem certeza disso?')"><button type="button" class="btn btn-danger btn-large"><i class="fa fa-trash-o" aria-hidden="true" alt="deletar"></i></button></a>
                             </td>
