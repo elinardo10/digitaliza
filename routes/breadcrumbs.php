@@ -7,22 +7,24 @@ Breadcrumbs::register('home', function ($breadcrumbs) {
 
 // inicio > nome da pasta dinamicamente
 Breadcrumbs::register('show.pastas', function ($breadcrumbs, $id) {
-	  $pasta = App\Pasta::find($id);
+	$pasta = App\Pasta::find($id);
 
     $breadcrumbs->parent('home');
     $breadcrumbs->push( $pasta->pasta, route('subpasta.lista', $pasta->id));
 });
 
 // Home > nome da pasta dinamicamente > subpasta dincamica
-Breadcrumbs::register('show.links', function ($breadcrumbs, $id, $pasta) {
-	$subpasta = App\SubPasta::find($id);
-	
-    $breadcrumbs->parent('show.pastas', $pasta);
-  	$breadcrumbs->push($subpasta->subpasta, route('listar.links', $subpasta->id));
-   	
-   
+Breadcrumbs::register('show.links', function ($breadcrumbs, $id) {
+      	   $subpasta = App\SubPasta::find($id);
+        
+        $breadcrumbs->parent('home');
+        
+    	$breadcrumbs->push($subpasta->subpasta, route('listar.links', $subpasta->id));
+
+  	   
        // $breadcrumbs->push('listar links', route('listar.links', $subpasta->id));
 });
+
 
 /* Home > Blog > [Category]
 Breadcrumbs::register('category', function ($breadcrumbs, $category) {

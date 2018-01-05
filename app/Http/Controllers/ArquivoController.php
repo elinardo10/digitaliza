@@ -55,7 +55,7 @@ class ArquivoController extends Controller{
         $subpastas = $pasta->subpasta()->getQuery()->get(['id', 'subpasta']);
         
       	//$pasta = Pasta::with('subpasta')->find($id);
-      	//$pastas = Pasta::with('subpasta')->get();*/
+      	//$pastas = Pasta::with('subpasta')->get();
 
     	return view('files.listSubpasta', ['pasta'=>$pasta, 'subpastas'=>$subpastas]);
 
@@ -80,8 +80,7 @@ class ArquivoController extends Controller{
 
     }
 
-    public function listarLink($id){  
-    	$pasta = $this->pastaModel->find($id); //passando essa variavel para url de informações breadcrumb-item
+    public function listarLink($id){
 
         $subpasta = SubPasta::find($id);
         $pasta = $subpasta->link()->get();

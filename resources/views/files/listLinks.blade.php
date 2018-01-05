@@ -11,7 +11,7 @@
           
           <div class="breadcrumb-holder container-fluid">
             <ul class="breadcrumb">
-              {{ Breadcrumbs::render('show.links', $subpasta->id, $pasta) }}
+              {{ Breadcrumbs::render('show.links', $subpasta->id) }}
             </ul>
           </div>
 
