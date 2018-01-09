@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\FormLinkRequest;
 Use App\Pasta;
 Use App\SubPasta;
 Use App\User;
 Use App\Link;
 use Session;
 use Illuminate\Support\Facades\Response;
+
 
 class ArquivoController extends Controller{
 	
@@ -31,10 +33,29 @@ class ArquivoController extends Controller{
 
      public function formLink(){
 
+
     	$pastas = $this->pastaModel->all();
     	$usuario = User::all();
 
     	return view('files.newLink')->with(compact('pastas','usuario'));
+    }
+
+    public function storeLink(FormLinkRequest $request, Link $link){
+    	
+    	 $insert = $link->create($request->all());
+    	 //$link->pasta()->createMany(Request::all());
+
+    	 if ($insert)
+        return redirect()
+                    ->route('folders.listar')
+                    ->with('msgsuccess', 'Dados inserido com sucesso!');
+ 
+        // Redireciona de volta com uma mensagem de erro
+    	return redirect()
+                ->back()
+                ->with('error', 'Falha ao inserir');
+      	
+
     }
 
      public function selectsub($idPasta){
@@ -62,23 +83,6 @@ class ArquivoController extends Controller{
     }
 
 
-    public function storeLink(Request $request, Link $link){
-    	
-    	 $insert = $link->create($request->all());
-    	 //$link->pasta()->createMany(Request::all());
-
-    	 if ($insert)
-        return redirect()
-                    ->route('folders.listar')
-                    ->with('msgsuccess', 'Dados inserido com sucesso!');
- 
-        // Redireciona de volta com uma mensagem de erro
-    	return redirect()
-                ->back()
-                ->with('error', 'Falha ao inserir');
-      	
-
-    }
 
     public function listarLink($id){
 
