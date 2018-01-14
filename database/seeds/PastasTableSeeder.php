@@ -24,7 +24,10 @@ class PastasTableSeeder extends Seeder
                 'pasta' =>$lista,
             ])->id;
 
-           
+            \App\SubPasta::create([
+                    'subpasta' => '2017',
+                    'pasta_id' => $pasta_id
+                ]);
             
             $total_de_ano = 3;
             for ($i=0; $i < $total_de_ano; $i++) { 

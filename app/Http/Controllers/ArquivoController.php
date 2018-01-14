@@ -8,7 +8,10 @@ Use App\Pasta;
 Use App\SubPasta;
 Use App\User;
 Use App\Link;
+Use App\Permission;
+Use App\Role;
 use Session;
+use Gate;
 use Illuminate\Support\Facades\Response;
 
 
@@ -88,6 +91,23 @@ class ArquivoController extends Controller{
 
         $subpasta = SubPasta::find($id);
         $pasta = $subpasta->link()->get();
-    	return view('files.listLinks')->with(compact('pasta', 'subpasta','pasta'));
+    	return view('files.listLinks')->with(compact('pasta', 'subpasta'));
+    }
+
+    public function destroy($id){
+    	$link = Link::find($id);
+
+    	if(empty($link)) {
+
+    	return redirect()->route('listar.links', $link->id)->withErrors(['O link não foi localizado']);
+        }
+
+         if( Gate::denies('delete_link', $link) ){
+        return redirect()->route('listar.links', $link->id )->withErrors(['você não tem permissão para excluir esse item.']);
+         }
+
+		$link->delete();
+
+return redirect()->route('folders.listar' )->with('msgsuccess', 'link deletado com sucesso');
     }
 }

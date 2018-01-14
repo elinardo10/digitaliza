@@ -12,9 +12,10 @@
             {{ Breadcrumbs::render('home') }}
           </div>
  <!-- listando pastas-->
-            @include('partials._messages')
+            
           <section class="projects no-padding-bottom">
             <div class="container-fluid">
+              @include('partials._messages')
               <!-- Project-->
               @foreach($pastas as $pasta)
               <div class="project">

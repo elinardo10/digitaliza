@@ -44,13 +44,16 @@
                          @foreach($pasta as $linkar)
             <tbody>
                 <tr>
+                  @can('view_link', $linkar)
                         <td>{{ $linkar->id }} </td>
                         <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{ $linkar->nome }} </td>
                         
                         <td width="1%" nowrap="nowrap">
-  <a href="{{$linkar->link}}" target="_blank" title="Baixar"><button type="button" class="btn btn-primary"><i class="fa fa-download" aria-hidden="true" alt="baixar"></i></button></a>
-
- <a href="" title="Delete Dados" onclick="return confirm('Tem certeza disso?')"><button type="button" class="btn btn-danger btn-large"><i class="fa fa-trash-o" aria-hidden="true" alt="deletar"></i></button></a>
+                        <a href="{{$linkar->link}}" target="_blank" title="Baixar"><button type="button" class="btn btn-primary"><i class="fa fa-download" aria-hidden="true" alt="baixar"></i></button></a>
+                  @endcan
+                         @can('delete_link', $linkar)
+                        <a href="{{route('link.delete', $linkar->id)}}" title="Delete Dados" onclick="return confirm('Tem certeza disso?')"><button type="button" class="btn btn-danger btn-large"><i class="fa fa-trash-o" aria-hidden="true" alt="deletar"></i></button></a>
+                @endcan
                             </td>
 
                 </tr>
