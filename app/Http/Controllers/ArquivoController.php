@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\FormLinkRequest;
+use Auth;
 Use App\Pasta;
 Use App\SubPasta;
 Use App\User;
@@ -91,6 +92,12 @@ class ArquivoController extends Controller{
 
         $subpasta = SubPasta::find($id);
         $pasta = $subpasta->link()->get();
+
+        /*if(Gate::denies('view_link')) {
+        $subpasta = $subpasta->where('user_id', Auth::user()->id);
+    }
+    	$pasta = $subpasta->paginate(10);*/
+
     	return view('files.listLinks')->with(compact('pasta', 'subpasta'));
     }
 

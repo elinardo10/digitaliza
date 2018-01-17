@@ -10,12 +10,13 @@
           <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
           <ul class="list-unstyled">
             <li class="active"> <a href="{{ route('folders.listar') }}"><i class="icon-home"></i>Home</a></li>
-            <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Paginas </a>
+            @can('create-link')
+            <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows">
+              </i>Adminstração</a>
               <ul id="dashvariants" class="collapse list-unstyled">
-                <li><a href="{{ route('folders.listar') }}">Listar Arquivos</a></li>
-                <li><a href="{{ route('new.link') }}">Cadastrar Link</a></li>
-                <li><a href="#">Page</a></li>
-                <li><a href="#">Page</a></li>
+                <!-- <li><a href="{{ route('folders.listar') }}">Listar Arquivos</a></li>-->
+                <li><a href="{{ route('new.link') }}"><i class="fa fa-file-text" aria-hidden="true"></i>Cadastrar Link</a></li>
+                @endcan
               </ul>
             </li>
             <!-- <li> <a href="tables.html"> <i class="icon-grid"></i>Tables </a></li>

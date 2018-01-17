@@ -8,7 +8,7 @@ class Pasta extends Model
 {	
 	
     protected $fillable = [
-        'pasta'
+        'pasta','user_id',
     ];
 
 
@@ -20,4 +20,5 @@ class Pasta extends Model
         return $this->hasMany('App\Link', 'pasta_id');
     }
 
+     
 }

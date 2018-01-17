@@ -10,8 +10,10 @@ Route::group(['middleware' => 'auth'], function(){
 		route::get('folders',     ['as'=> 'folders.listar', 'uses' => 'ArquivoController@list']);
 		route::get('subfolders/{idPasta}',     ['as'=> 'subpasta.listar', 'uses' => 'ArquivoController@selectsub']);
 		route::get('folder/subfolder/{id}',     ['as'=> 'subpasta.lista', 'uses' => 'ArquivoController@subpasta']);
-		route::get('newkink',     ['as'=> 'new.link', 'uses' => 'ArquivoController@formLink']);
-		route::post('storelink',     ['as'=> 'store.link', 'uses' => 'ArquivoController@storeLink']);
+		route::get('newkink',     ['as'=> 'new.link', 'uses' => 'ArquivoController@formLink'])
+				  ->middleware('can:create-link');
+		route::post('storelink',     ['as'=> 'store.link', 'uses' => 'ArquivoController@storeLink'])
+				  ->middleware('can:create-link');;
 		route::get('folder/subfolder/listar-links/{id}',     ['as'=> 'listar.links', 'uses' => 'ArquivoController@listarLink']);
 		route::get('deletarlink/{id}',     ['as'=> 'link.delete', 'uses' => 'ArquivoController@destroy']);
 		
