@@ -17,6 +17,12 @@ class LinkPolicy
      * @param  \App\Link  $link
      * @return mixed
      */
+
+    public function before(User $user, Link $link)
+    {
+        return $user->name = 'Admin';
+    }
+
     public function view(User $user, Link $link)
     {
         //

@@ -44,7 +44,7 @@
                          @foreach($pasta as $linkar)
             <tbody>
                 <tr>
-                  @can('view_link', $linkar)
+                  @can('owner', $linkar)
                         <td>{{ $linkar->id }} </td>
                         <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{ $linkar->nome }} </td>
                         

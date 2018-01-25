@@ -38,8 +38,17 @@ class AuthServiceProvider extends ServiceProvider
             });
         }
 
-        Gate::define('view_link', function (User $user, Link $link) {
+        Gate::define('owner', function (User $user, Link $link) {
         return $user->id == $link->user_id;
+        });
+
+        Gate::before(function(User $user, $ability){
+
+                if($user->hasAnyRoles('admin')){
+
+                    return true;
+                }
+
         });
     }
 }

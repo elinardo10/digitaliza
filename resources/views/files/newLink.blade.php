@@ -84,7 +84,7 @@
                         <div class="form-group row">
                           <div class="col-sm-4 offset-sm-3">
                             <button type="submit" class="btn btn-secondary">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Salvar</button>
                           </div>
                         </div>
                       </form>
