@@ -31,5 +31,11 @@ class PermissionsSeeder extends Seeder
            'name' => 'delete_link', 
            'label' => 'deletador de link',
         ]);
+
+        DB::table('permission_role')->insert([
+            ['permission_id' => 1,'role_id' => 2],
+            //['cidade' => 'Assis Brasil', 'estado_id' => 1],
+           
+        ]);
     }
 }

@@ -10,7 +10,7 @@
           <!-- Breadcrumb-->
           <div class="breadcrumb-holder container-fluid">
             <ul class="breadcrumb">
-              {{ Breadcrumbs::render('show.pastas', $pasta->id) }}
+              {{ Breadcrumbs::render('show.pastas', $pasta->pasta) }}
           </div>
  <!-- listando pastas-->
 

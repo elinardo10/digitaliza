@@ -18,8 +18,15 @@ class RolesSeeder extends Seeder
         ]);
 
         $custumer = App\Role::create([
-           'name' => 'custumer', 
+           'name' => 'cliente', 
            'label' => 'Visualizador de links',
+        ]);
+
+        DB::table('role_user')->insert([
+            ['role_id' => 1, 'user_id' => 1],
+            ['role_id' => 1, 'user_id' => 2],
+            //['cidade' => 'Assis Brasil', 'estado_id' => 1],
+           
         ]);
     }
 }

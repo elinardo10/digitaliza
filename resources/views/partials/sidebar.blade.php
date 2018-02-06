@@ -16,6 +16,7 @@
               <ul id="dashvariants" class="collapse list-unstyled">
                 <!-- <li><a href="{{ route('folders.listar') }}">Listar Arquivos</a></li>-->
                 <li><a href="{{ route('new.link') }}"><i class="fa fa-file-text" aria-hidden="true"></i>Cadastrar Link</a></li>
+                <li><a href="{{ route('user.list') }}"><i class="fa fa-users" aria-hidden="true"></i>Usuários</a></li>
                 @endcan
               </ul>
             </li>

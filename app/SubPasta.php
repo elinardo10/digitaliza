@@ -11,7 +11,7 @@ class SubPasta extends Model
     ];
 
 public function pasta(){
-       return $this->belongsTo('App\Pasta','pasta_id','id'); 
+       return $this->belongsTo('App\Pasta','subpasta_id','id'); 
     }
 
     public function link(){

@@ -13,10 +13,16 @@ Route::group(['middleware' => 'auth'], function(){
 		route::get('newkink',     ['as'=> 'new.link', 'uses' => 'ArquivoController@formLink'])
 				  ->middleware('can:create-link');
 		route::post('storelink',     ['as'=> 'store.link', 'uses' => 'ArquivoController@storeLink'])
-				  ->middleware('can:create-link');;
+				  ->middleware('can:create-link');
 		route::get('folder/subfolder/listar-links/{id}',     ['as'=> 'listar.links', 'uses' => 'ArquivoController@listarLink']);
 		route::get('deletarlink/{id}',     ['as'=> 'link.delete', 'uses' => 'ArquivoController@destroy']);
 		
+		// usuarios do sistema
+		route::get('usuarios',     ['as'=> 'user.list', 'uses' => 'UserController@index'])
+				  ->middleware('can:create-link');
+	    route::get('editaruser/{id}/edit',     ['as'=> 'user.edit', 'uses' => 'UserController@editform']);
+	    route::post('updateuser/{id}',     ['as'=> 'user.update', 'uses' => 'UserController@update']);
+		route::get('deletaruser/{id}',     ['as'=> 'user.delete', 'uses' => 'UserController@destroy']);
  	});
 
 });
