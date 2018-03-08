@@ -14,7 +14,7 @@ Breadcrumbs::register('usuarios', function ($breadcrumbs) {
 Breadcrumbs::register('add_usuarios', function ($breadcrumbs) {
         
       $breadcrumbs->parent('usuarios');  
-      $breadcrumbs->push('+ Usuários', route('register'));
+      $breadcrumbs->push('+ Usuários', route('user.create'));
 });
 
 

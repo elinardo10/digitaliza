@@ -20,7 +20,11 @@ Route::group(['middleware' => 'auth'], function(){
 		// usuarios do sistema
 		route::get('usuarios',     ['as'=> 'user.list', 'uses' => 'UserController@index'])
 				  ->middleware('can:create-link');
-	    route::get('editaruser/{id}/edit',     ['as'=> 'user.edit', 'uses' => 'UserController@editform']);
+	    route::get('usuarios/novo',     ['as'=> 'user.create', 'uses' => 'UserController@create'])
+				  ->middleware('can:create-link');
+	    route::post('usuarios/store',     ['as'=> 'user.store', 'uses' => 'UserController@store'])
+				  ->middleware('can:create-link');
+	    route::get('editaruser/{id}/edit',     ['as'=> 'user.edit', 'uses' => 'UserController@edit']);
 	    route::post('updateuser/{id}',     ['as'=> 'user.update', 'uses' => 'UserController@update']);
 		route::get('deletaruser/{id}',     ['as'=> 'user.delete', 'uses' => 'UserController@destroy']);
  	});

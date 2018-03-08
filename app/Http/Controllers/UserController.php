@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 Use App\User;
 Use App\Role;
 use Session;
@@ -26,25 +27,58 @@ class UserController extends Controller
     	return view('usuarios.index', compact('users'));
       }
 
-       public function editform($id)
+      public function create()
       {
-      	$user = User::with('roles')->find($id);
-      	//$user = $this->userModel->find($id);
-      	$roles = Role::orderBy('name')->pluck('name', 'id');
-
-    	return view('usuarios.edit', compact('user', 'roles'));
+      	 $roles = Role::orderBy('name')->pluck('name', 'id');
+         return view('usuarios.create', compact('roles'));
       }
 
-       public function update(Request $request, $id)
+       public function store(UserRequest $request )
+      {	$insert = $request->only('name', 'email','password', 'role');
+  	
+      	$user = User::create([
+            'name' => $insert['name'],
+            'email' => $insert['email'],
+            'password' => bcrypt($insert['password']),
+         
+        ]);
+         $user->roles()->attach($insert['role']);
+         //return $user;
+
+         Session::flash('msgsuccess', 'Usuário Cadastrado com Sucesso!');
+	 	return redirect()->route('user.list');
+      }
+
+       public function edit($id)
       {
-      	$user = $this->userModel->find($id);
-      	
-      	
-      
-      	
+      	$roles = Role::select('id', 'name', 'label')->get();
+        $roles = $roles->pluck('label', 'name');
+        $user = User::with('roles')->select('id', 'name', 'email')->findOrFail($id);
+        $user_roles = [];
+        foreach ($user->roles as $role) {
+            $user_roles[] = $role->name;
+        }
+       
+    	return view('usuarios.edit', compact('user', 'roles', 'user_roles'));
+      }
+
+       public function update(UserRequest $request, $id)
+      {
+      	  $this->validate($request, ['name' => 'required', 'email' => 'required', 'roles' => 'required']);
+        $data = $request->except('password');
+        if ($request->has('password')) {
+            $data['password'] = bcrypt($request->password);
+        }
+        $user = User::findOrFail($id);
+        $user->update($data);
+        $user->roles()->detach();
+        foreach ($request->roles as $role) {
+            $user->assignRole($role);
+        }
+ 	
 
     	Session::flash('msgsuccess', 'Usuário alterado com sucesso!');
-	 	return redirect()->route('user.list')->with(compact('user', 'roles'));
+	 	return redirect()->route('user.list');
       }
 
         public function destroy($id){
