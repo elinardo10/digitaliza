@@ -11,10 +11,16 @@ Breadcrumbs::register('usuarios', function ($breadcrumbs) {
       $breadcrumbs->push('Usuários', route('user.list'));
 });
 
-Breadcrumbs::register('add_usuarios', function ($breadcrumbs) {
-        
+Breadcrumbs::register('add_usuarios', function ($breadcrumbs) { 
       $breadcrumbs->parent('usuarios');  
       $breadcrumbs->push('+ Usuários', route('user.create'));
+});
+
+Breadcrumbs::register('edite_user', function ($breadcrumbs, $id) { 
+
+      $user = App\User::find($id);
+      $breadcrumbs->parent('usuarios');  
+      $breadcrumbs->push('Editar Usuário', route('user.edit', $user->id));
 });
 
 

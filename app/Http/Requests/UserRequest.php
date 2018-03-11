@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+Use App\User;
 
 
 class UserRequest extends FormRequest
@@ -24,11 +25,12 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
+        
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$this->id,
             'password' => 'required|string|min:6|confirmed',
-            'role' => 'required|exists:roles,id',
+            'role' => 'required|',
         ];
     }
 

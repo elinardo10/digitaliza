@@ -10,6 +10,8 @@
 | the IoC container for the system binding all of the various parts.
 |
 */
+Illuminate\Pagination\AbstractPaginator::defaultView("pagination::bootstrap-4");
+Illuminate\Pagination\AbstractPaginator::defaultSimpleView("pagination::simple-bootstrap-4");
 
 $app = new Illuminate\Foundation\Application(
     realpath(__DIR__.'/../')
