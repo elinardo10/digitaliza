@@ -54,6 +54,13 @@ class User extends Authenticatable
         
         return $this->roles->contains('name', $roles);
     }
+
+    public function assignRole($role)
+    {
+        return $this->roles()->save(
+            Role::whereName($role)->firstOrFail()
+        );
+    }
        
     }
 

@@ -25,6 +25,10 @@ class CreateLinksTable extends Migration
             $table->integer('subpasta_id')->unsigned();
             $table->foreign('subpasta_id')->references('id')->on('sub_pastas')
                   ->onDelete('CASCADE')->onUpdate('CASCADE');
+
+            $table->integer('month_id')->unsigned();
+            $table->foreign('month_id')->references('id')->on('months')
+                  ->onDelete('CASCADE')->onUpdate('CASCADE');
                   
             $table->string('nome');
             $table->string('link');

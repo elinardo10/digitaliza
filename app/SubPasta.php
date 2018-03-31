@@ -18,6 +18,10 @@ public function pasta(){
         return $this->hasMany('App\Link','subpasta_id','id');
     }
 
+      public function month(){
+        return $this->hasMany('App\Month', 'subpasta_id', 'id');
+    }
+
     
 
 }

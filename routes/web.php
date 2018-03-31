@@ -10,12 +10,19 @@ Route::group(['middleware' => 'auth'], function(){
 		route::get('folders',     ['as'=> 'folders.listar', 'uses' => 'ArquivoController@list']);
 		route::get('subfolders/{idPasta}',     ['as'=> 'subpasta.listar', 'uses' => 'ArquivoController@selectsub']);
 		route::get('folder/subfolder/{id}',     ['as'=> 'subpasta.lista', 'uses' => 'ArquivoController@subpasta']);
+		// Meses controllers
+		route::get('folder/subfolder/meses/{id}',     ['as'=> 'meses.lista', 'uses' => 'MesesController@index']);
+
+
+		// links controllers
+		route::get('folder/subfolder/meses/listar-links/{id}',     ['as'=> 'listar.links', 'uses' => 'LinkController@listarLink']);
 		route::get('newkink',     ['as'=> 'new.link', 'uses' => 'ArquivoController@formLink'])
 				  ->middleware('can:create-link');
 		route::post('storelink',     ['as'=> 'store.link', 'uses' => 'ArquivoController@storeLink'])
 				  ->middleware('can:create-link');
-		route::get('folder/subfolder/listar-links/{id}',     ['as'=> 'listar.links', 'uses' => 'ArquivoController@listarLink']);
-		route::get('deletarlink/{id}',     ['as'=> 'link.delete', 'uses' => 'ArquivoController@destroy']);
+		
+		route::get('deletarlink/{id}',     ['as'=> 'link.delete', 'uses' => 'LinkController@destroy']);
+
 		
 		// usuarios do sistema
 		route::get('usuarios',     ['as'=> 'user.list', 'uses' => 'UserController@index'])
@@ -32,5 +39,3 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -11,7 +11,7 @@
           
           <div class="breadcrumb-holder container-fluid">
             <ul class="breadcrumb">
-              {{ Breadcrumbs::render('show.links', $subpasta->id) }}
+              
             </ul>
           </div>
 
@@ -41,7 +41,7 @@
                             <th>Ações</th>
                           </tr>
                         </thead>
-                         @foreach($pasta as $linkar)
+                         @foreach($links as $linkar)
             <tbody>
                 <tr>
                   @can('owner', $linkar)

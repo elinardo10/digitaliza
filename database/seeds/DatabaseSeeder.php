@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PastasTableSeeder::class);
         $this->call(RolesSeeder::class);
         $this->call(PermissionsSeeder::class);
-        //$this->call(SubPastasTableSeeder::class);
+        $this->call(MonthTableSeeder::class);
         
     }
 }
