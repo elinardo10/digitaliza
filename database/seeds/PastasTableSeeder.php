@@ -16,7 +16,22 @@ class PastasTableSeeder extends Seeder
             'Contabilidade',
             'Extratos',
             'Licitações'
-        ];       
+        ];  
+
+            $listMeses = [
+            'Janeiro',
+            'Fevereiro',
+            'Março',
+            'Abril',
+            'Maio',
+            'Junho',
+            'Julho',
+            'Agosto',
+            'Setembro',
+            'Outubro',
+            'Novembro',
+            'Dezembro'
+        ];     
 
         foreach ($arrayLista as $lista) {
 
@@ -26,10 +41,18 @@ class PastasTableSeeder extends Seeder
             
            // $total_de_ano = 3;
             for ($i=2017; $i < 2021; $i++) { 
-                \App\SubPasta::create([
+               $subpasta_id = \App\SubPasta::create([
                     'subpasta' => $i,
                     'pasta_id' => $pasta_id
+                ])->id;
+
+                foreach ($listMeses as $meses) {
+                    \App\Month::create([
+                    'name' => $meses,
+                    'subpasta_id' => $subpasta_id
                 ]);
+                    
+                }
             }
 
         }

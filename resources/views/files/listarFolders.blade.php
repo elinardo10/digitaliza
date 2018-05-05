@@ -8,13 +8,12 @@
     </div>
   </header>
   <!-- Breadcrumb-->
-  <div class="breadcrumb-holder container-fluid">
-    {{ Breadcrumbs::render('home') }}
-  </div>
+  
   <!-- listando pastas-->
   
   <section class="projects no-padding-bottom">
     <div class="container-fluid">
+    
       @include('partials._messages')
       <!-- Project-->
       @foreach($pastas as $pasta)
@@ -23,12 +22,17 @@
           <div class="left-col col-lg-6 d-flex align-items-center justify-content-between">
             <div class="project-title d-flex align-items-center">
               <div class="text">
-                
+
                 <h3 class="h4"><i class="fa fa-folder fa-4" aria-hidden="true"></i> <a href="{{route('subpasta.lista', $pasta->id)}}">{{$pasta->pasta}}</a></h3>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
       @endforeach
       
@@ -37,4 +41,10 @@
       
     </div>
   </section>
+  @endsection
+  @section('js-seach')
+  <!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
+  <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+  <script src="{{ asset('js/algolia.js') }}"></script>
   @endsection

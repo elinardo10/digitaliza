@@ -8,10 +8,7 @@
             </div>
           </header>
           <!-- Breadcrumb-->
-          <div class="breadcrumb-holder container-fluid">
-            <ul class="breadcrumb">
-              {{ Breadcrumbs::render('show.pastas', $pasta->pasta) }}
-          </div>
+          
  <!-- listando pastas-->
 
           <section class="projects no-padding-bottom">
@@ -38,3 +35,9 @@
             </div>
           </section>
              @endsection
+             @section('js-seach')
+    <!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+    <script src="{{ asset('js/algolia.js') }}"></script>
+@endsection

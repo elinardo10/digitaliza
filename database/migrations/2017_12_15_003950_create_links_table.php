@@ -30,8 +30,9 @@ class CreateLinksTable extends Migration
             $table->foreign('month_id')->references('id')->on('months')
                   ->onDelete('CASCADE')->onUpdate('CASCADE');
                   
-            $table->string('nome');
+            $table->string('name');
             $table->string('link');
+            $table->string('slug');
             $table->timestamps();
         });
     }

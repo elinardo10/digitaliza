@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/sistema/folders';
+    protected $redirectTo = '/sistema';
 
     /**
      * Create a new controller instance.

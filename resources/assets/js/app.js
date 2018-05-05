@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 
+
 window.Vue = require('vue');
 
 /**
@@ -15,8 +16,45 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+
+Vue.component('autocomplete', require('./components/Autocomplete.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    //Trabalhando dentro da pagina listLinks.blade.php
+      props: [
+        'links'
+      ],
+    data(){
+   return {
+   			
+   			query: '',
+            results: [],
+   			titulo:'Listar Links'
+    	}
+    },
+   
+        	methods: {
+        	autoComplete(){
+    		this.results = [];
+   		    if(this.query.length > 1){
+     	    axios.get('/sistema/search',{params: {query: this.query}}).then(response => {
+     	    this.results = response.data;
+     });
+    }else{
+    	this.query  = this.results
+    }
+   }
+  },
+
+   /* mounted(){
+
+
+  			//this.results = JSON.parse(this.links),
+  	
+		     axios.get('/sistema/search')
+			.then((response)=> this.results = this.links = response.data)
+			.catch((error) => this.errors = error.response.data.errors)
+		},*/
+    
 });

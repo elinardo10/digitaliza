@@ -10,15 +10,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
+   
+    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="{{ asset('css/style.green.css') }}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('img/logo_curta.png') }}">
     <!-- Font Awesome CDN-->
     <!-- you can replace it by local Font Awesome-->
     <script src="https://use.fontawesome.com/99347ac47f.js"></script>
@@ -33,13 +35,13 @@
       <!-- Main Navbar-->
       <header class="header">
         <nav class="navbar">
-          <!-- Search Box-->
+          <!-- Search Box
           <div class="search-box">
-            <button class="dismiss"><i class="icon-close"></i></button>
-            <form id="searchForm" action="#" role="search">
-              <input type="search" placeholder="O que procura?" class="form-control">
+            <button class="dismiss"><i class="fa fa-times"></i></button>
+            <form id="searchForm" method="GET" action="/sistema/search" role="search">
+              <input type="search" placeholder="O que procura?" name="search" class="form-control" aria-label="Search">
             </form>
-          </div>
+          </div>-->
           <div class="container-fluid">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
@@ -52,8 +54,8 @@
               <!-- Navbar Menu -->
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                 <!-- Search-->
-                <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-
+          @include('partials.search')
+              
                 <!-- Notifications
                 <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red">12</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
@@ -117,5 +119,4 @@
             </div>
           </div>
         </nav>
-      </header>
-       
+</header>

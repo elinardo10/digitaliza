@@ -8,11 +8,7 @@
       </div>
     </header>
     <!-- Breadcrumb-->
-    <div class="breadcrumb-holder container-fluid">
-      <ul class="breadcrumb">
-       {{ Breadcrumbs::render('edite_user', $user->id) }}
-     </ul>
-   </div>
+    
    <!-- Forms Section-->
    <section class="forms"> 
     <div class="container-fluid">

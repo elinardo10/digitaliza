@@ -6,10 +6,11 @@ window._ = require('lodash');
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
-
+ 
 try {
     window.$ = window.jQuery = require('jquery');
 
+    window.$ = window.Popper = require('popper.js');
     require('bootstrap');
 } catch (e) {}
 

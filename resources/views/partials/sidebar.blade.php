@@ -9,14 +9,15 @@
           </div>
           <!-- Sidebar Navidation Menus<span class="heading">Main</span>-->
           <ul class="list-unstyled">
-            <li class="active"> <a href="{{ route('folders.listar') }}"><i class="icon-home"></i>Home</a></li>
+            <li class="active"> <a href="{{ route('folders.listar') }}"><i class="fa fa-home" aria-hidden="true"></i>
+</i>Home</a></li>
             @can('create-link')
-            <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows">
-              </i>Adminstração</a>
+            <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"><i class="fa fa-cogs" aria-hidden="true"></i> Ajustes</a>
               <ul id="dashvariants" class="collapse list-unstyled">
                 <!-- <li><a href="{{ route('folders.listar') }}">Listar Arquivos</a></li>-->
                 <li><a href="{{ route('new.link') }}"><i class="fa fa-file-text" aria-hidden="true"></i>Cadastrar Link</a></li>
                 <li><a href="{{ route('user.list') }}"><i class="fa fa-users" aria-hidden="true"></i>Usuários</a></li>
+                <li><a href="{{ route('pasta.new') }}"><i class="fa fa-folder-open" aria-hidden="true"></i>+ Pastas</a></li>
                 @endcan
               </ul>
             </li>

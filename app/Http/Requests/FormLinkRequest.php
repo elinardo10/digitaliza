@@ -21,28 +21,30 @@ class FormLinkRequest extends FormRequest
      *
      * @return array
      */
-       public function rules()
+    public function rules()
     {
-         return [
+       return [
 
-            'nome' => 'required|min:3',
-            'link' => 'required|min:3',
-            'user_id' => 'required',
-            'pasta_id' => 'required',
-            'subpasta_id' => 'required',
-        ];
-    }
+       'name' => 'required|min:3',
+       'link' => 'required|min:3',
+       'slug' => 'required|min:3',
+       'user_id' => 'required',
+       'pasta_id' => 'required',
+       'subpasta_id' => 'required',
+       ];
+   }
 
-        public function messages(){
+   public function messages(){
 
-        return[
-        'required' => 'O campo :attribute não pode ser vazio!',
-        'nome.required' => 'O arquivo precisa de um nome!',
-        'nome.min' => 'Nome do arquivo não pode ter menos de 3 caracteres',
-        'link.required' => 'Por favor insira o link do arquivo.',
-        'user_id.required' => 'Por favor, Selecione um usuário!',
-        'pasta_id.required' => 'Por favor, Selecione uma pasta!',
-        'subpasta_id.required' => 'Por favor, Selecione um ano',
-        ];
-    }
+    return[
+    'required' => 'O campo :attribute não pode ser vazio!',
+    'name.required' => 'O arquivo precisa de um nome!',
+    'name.min' => 'Nome do arquivo não pode ter menos de 3 caracteres',
+    'link.required' => 'Por favor insira o link do arquivo.',
+    'slug.required' => 'Por favor insira o link do arquivo.',
+    'user_id.required' => 'Por favor, Selecione um usuário!',
+    'pasta_id.required' => 'Por favor, Selecione uma pasta!',
+    'subpasta_id.required' => 'Por favor, Selecione um ano',
+    ];
+}
 }

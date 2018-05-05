@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use App\Link;
 use App\User;
-use App\Permission;
+//use App\Permission;
 use App\Policies\LinkPolicy;
 
 class AuthServiceProvider extends ServiceProvider
@@ -30,24 +30,24 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         
-        $permissions = Permission::with('roles')->get();
+       /* $permissions = Permission::with('roles')->get();
         foreach( $permissions as $permission )
         {
             Gate::define($permission->name, function(User $user) use ($permission){
                 return $user->hasPermission($permission);
             });
-        }
+        }*/
 
         Gate::define('owner', function (User $user, Link $link) {
-        return $user->id == $link->user_id;
+            return $user->id == $link->user_id;
         });
 
         Gate::before(function(User $user, $ability){
 
-                if($user->hasAnyRoles('admin')){
+            if($user->hasAnyRoles('admin')){
 
-                    return true;
-                }
+                return true;
+            }
 
         });
     }
